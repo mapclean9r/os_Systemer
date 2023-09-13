@@ -1,0 +1,12 @@
+@startuml oppgave1
+left to right direction
+:Bruker: --> (bestille opplevelse)
+:Bruker: --> (betale for opplevelse)
+:Bruker: --> (lagre opplevelse)
+:Bruker: --> (søke etter opplevelse)
+:Admin: --> (se hvor mange som har kjøpt opplevelse)
+:Admin: --> (slette opplevelse fra tjeneste)
+:Admin: --> (Legge til ny opplevelse)
+:Admin: --> (blokkere brukere)
+@enduml
+PlantUML-kildekode til for use caset
