@@ -1,0 +1,19 @@
+@startuml name vetle
+'https://plantuml.com/use-case-diagram
+
+left to right direction
+:Bruker: --> (Søke etter opplevelse)
+(Søke etter opplevelse) --> (Lagre opplevelse)
+(Søke etter opplevelse) --> (Bestille opplevelse)
+
+:Bruker: --> (Bestille opplevelse)
+(Bestille opplevelse) --> (Betale for opplevelse)
+(Betale for opplevelse) --> (Kunne gi rating)
+
+
+:Bruker: --> (Lagre opplevelse)
+
+
+
+
+@enduml

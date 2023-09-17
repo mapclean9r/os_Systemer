@@ -1,0 +1,11 @@
+@startuml
+
+left to right direction
+
+:Admin: --> (Se opprettet opplevelser)
+(Se opprettet opplevelser) --> (Legge til ny opplevelse)
+(Legge til ny opplevelse) --> (Slette opplevelse fra tjeneste)
+(Legge til ny opplevelse) --> (Se betalinger for opplevelse)
+
+
+@enduml
