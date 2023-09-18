@@ -18,3 +18,11 @@ cur.execute("""CREATE TABLE Tur_info(
             STED TEXT NOT NULL,
             NAVN TEXT,
             BESKRIVELSE TEXT)""")
+cur.execute("""CREATE TABLE Tur_booking(
+            ID_tur INTEGER,
+            ID_Bruker INTEGER)"""
+            )
+cur.execute("""CREATE TABLE kobling_person_Bruker(
+            ID_Person INTEGER,
+            ID_Bruker INTEGER)"""
+)
