@@ -1,5 +1,6 @@
 import smtplib
 import sqlite3
+import database_def as db
 con = sqlite3.connect("guid.db")
 cur = con.cursor()
 
@@ -9,11 +10,11 @@ from email.message import EmailMessage
 
 # Create the container email message.
 msg = EmailMessage()
-msg['Subject'] = 'Our family reunion'
-# me == the sender's email address
-# family = the list of all recipients' email addresses
+msg['Subject'] = 'Velkommen til safaritur'
+#Lag en ekte email kanskje?
 msg['From'] = "Admin-mail"
-msg['To'] = 
+#DETTE SKAL FUNGERE I TEORIEN MEN IDK
+msg['To'] = db.email_henter
 msg.preamble = 'You will not see this in a MIME-aware mail reader.\n'
 
 # Open the files in binary mode.  You can also omit the subtype

@@ -4,6 +4,15 @@ cur = con.cursor()
 
 test = cur.execute("SELECT ID FROM Person")
 
+#Bruk denne når man skal logge inn 
+#Finner ID til brukeren som er akkurat innlogget
+def finne_id_bruker(bruker):
+     id = cur.execute("SELECT ID FROM Bruker_konto WHERE BRUKERNAVN == (?)",bruker)
+     return id
+
+def finne_tur_id():
+     pass
+
 #Funksjon for å legge inn informasjon om personen (Kan bli mere info hvis noen har ideer)
 def lag_person(fornavn,etternavn,age,):
     cur.execute("INSERT INTO Person(FORNAVN,ETTERNAVN,AGE) VALUES (?,?,?)",(fornavn,etternavn,age))
@@ -31,17 +40,18 @@ def kobling_bruker_person(bruker_id,person_id):#Putt inn tkinter bruker input i 
 def lag_tur_info(sted,navn,beskrivelse):
     cur.execute("INSERT INTO Tur_info(STED,NAVN,BESKRIVELSE)",(sted,navn,beskrivelse))
 
-def tur_kjøp():
-    pass
+def email_henter(brukernavn):
+     cur.execute("SELECT EMAIL FROM Bruker_konto WHERE ID == (?)", finne_id_bruker(brukernavn))
 
-#Bruk denne når man skal logge inn 
-#Finner ID til brukeren som er akkurat innlogget
-def finne_id_bruker(bruker):
-     id = cur.execute("SELECT ID FROM Bruker_konto WHERE BRUKERNAVN == (?)",bruker)
-     return id
+#Skal legge inn booking til profil
+#def tur_kjøp(tur,bruker):
+#     cur.execute("INSERT INTO Tur_booking(ID_tur,ID_Bruker) VALUES(?,?)",(  ,finne_id_bruker(bruker)))
+    
+
+
 
 #lag_brukerkonto("Tam","dan","FAKE@Fakis",1)
-
+variabelnavn = "dummy"
 
 res = cur.execute("SELECT BRUKERNAVN FROM Bruker_konto WHERE ID==(?)",finne_id_bruker(variabelnavn))#Variabelnavn skal bli byttet til hva variabelen som holder på brukeren sin brukernavn 
 ID = res.fetchall()
