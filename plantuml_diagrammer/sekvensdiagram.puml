@@ -1,0 +1,11 @@
+@startuml Sekvensdiagram
+actor Bruker
+participant Frontend
+participant Database
+actor Admin
+Turist -> Tjeneste: Velger en tur
+Turist -> Tjeneste: Sender tur-forespørsel
+Tjeneste -> Turguide: Oppretter tur-forespørsel
+Tjeneste <-- Turguide: Behandler tur-forespørsel
+activate Frontend
+deactivate Frontend
