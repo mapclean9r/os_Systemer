@@ -14,15 +14,9 @@ left to right direction
 :Bruker: --> (Slette opplevelse)
 
 
-
-'(Redigere opplevelse) --> (Slette opplevelse)
+(Opprette opplevelse) <-- :Admin:
 (Redigere opplevelse) <-- :Admin:
-'(Redigere opplevelse) --> (Legge til ny opplevelse)
 (Blokkere brukere) <-- :Admin:
-'(Redigere bestilling) --> (Kansellere bestilling)
-':Admin: --> (Søke etter opplevelse)
-':Bruker: --> (Se ordrehistorikk)
-':Admin: --> (Se ordrehistorikk)
 (Se ordrehistorikk) <-- :Admin:
 (Logge in/ut) <-- :Admin:
 (Slette opplevelse) <-- :Admin:
