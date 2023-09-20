@@ -3,7 +3,6 @@ actor Bruker
 participant Frontend
 participant Backend
 participant Database
-actor Admin
 
 Bruker -> Frontend: Velger opplevelse
 activate Frontend
