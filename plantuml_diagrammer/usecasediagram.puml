@@ -1,12 +1,21 @@
 @startuml oppgave1
 left to right direction
-:Bruker: --> (bestille opplevelse)
-:Bruker: --> (betale for opplevelse)
-:Bruker: --> (lagre opplevelse)
-:Bruker: --> (søke etter opplevelse)
-:Admin: --> (se hvor mange som har kjøpt opplevelse)
-:Admin: --> (slette opplevelse fra tjeneste)
+:Bruker: --> (Bestille opplevelse) 
+(Bestille opplevelse) --> (Bestille for flere personer/gruppe)
+(Bestille opplevelse) --> (Bestille for 1 person)
+:Bruker: --> (Betale for opplevelse)
+(Betale for opplevelse) --> (Betale med vipps)
+(Betale for opplevelse) --> (Betale med kort)
+:Bruker: --> (Lagre opplevelse)
+:Bruker: --> (Søke etter opplevelse)
+:Bruker: --> (Logge in/ut)
+:Admin: --> (Slette opplevelse)
 :Admin: --> (Legge til ny opplevelse)
-:Admin: --> (blokkere brukere)
+:Admin: --> (Blokkere brukere)
+:Admin: --> (Redigere bestilling)
+:Admin: --> (kansellere bestilling)
+:Admin: --> (Søke etter opplevelse)
+:Admin: --> (Logge in/ut)
 @enduml
-PlantUML-kildekode til for use caset 
+PlantUML-kildekode til for use caset
+
