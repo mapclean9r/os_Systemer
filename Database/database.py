@@ -2,12 +2,12 @@ import sqlite3
 con = sqlite3.connect("guid.db")
 cur = con.cursor()
 
-
+test = cur.execute("SELECT ID FROM Person")
 
 #Funksjon for å legge inn informasjon om personen (Kan bli mere info hvis noen har ideer)
 def lag_person(fornavn,etternavn,age,):
     cur.execute("INSERT INTO Person(FORNAVN,ETTERNAVN,AGE) VALUES (?,?,?)",(fornavn,etternavn,age))
-    cur.execute("INSERT INTO kobling_person_Bruker(ID_Person) VALUES (?)", cur.execute("SELECT ID FROM Person WHERE "))#LEGG TIL SISTE ADDET ID
+#    cur.execute("INSERT INTO kobling_person_Bruker(ID_Person) VALUES (?)", (test,))
 
 
 #Funksjonen for å lage kontoer
