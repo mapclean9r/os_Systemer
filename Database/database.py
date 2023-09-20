@@ -31,10 +31,10 @@ def kobling_bruker_person(bruker_id,person_id):#Putt inn tkinter bruker input i 
 def lag_tur_info(sted,navn,beskrivelse):
     cur.execute("INSERT INTO Tur_info(STED,NAVN,BESKRIVELSE)",(sted,navn,beskrivelse))
 
-def konto_kobling():
-    lag_brukerkonto("admin","admin")
-    lag_person("test","lest",53)
-    kobling_bruker_person()
+def tur_kjøp(bruker_id,tur_id):
+    pass
+
+
 
 
 res = cur.execute("SELECT ID FROM Bruker_konto")

@@ -19,6 +19,7 @@ cur.execute("""CREATE TABLE Tur_info(
             NAVN TEXT,
             BESKRIVELSE TEXT)""")
 cur.execute("""CREATE TABLE Tur_booking(
+            Dato DATE PRIMARY KEY,
             ID_tur INTEGER,
             ID_Bruker INTEGER)"""
             )
