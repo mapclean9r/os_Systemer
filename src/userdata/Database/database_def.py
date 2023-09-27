@@ -10,8 +10,10 @@ def finne_id_bruker(bruker):
     cur.execute("SELECT ID FROM Bruker_konto WHERE BRUKERNAVN = ?", (bruker,))
     result = cur.fetchone() 
     if result:
+        print("res0")
         return result[0]
     else:
+        print("-1")
         return -1  
 
 
