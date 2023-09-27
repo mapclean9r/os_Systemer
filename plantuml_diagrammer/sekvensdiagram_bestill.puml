@@ -15,3 +15,5 @@ Frontend <-- Backend: Ordre godkjent
 Frontend --> Bruker: Kvitering på mail
 deactivate Backend
 deactivate Frontend
+
+ 
