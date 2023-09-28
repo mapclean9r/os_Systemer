@@ -12,20 +12,23 @@ def finne_id_bruker(bruker):
 
 
 def lag_brukerkonto(brukernavn, passord, email, isadmin):
-    cur.execute("SELECT COUNT(*) FROM BrukerKonto WHERE EMail = ?", (email,))
-    Email = cur.fetchone
-    if Email > 0:
-        return ("Emailen er allerede i bruk")
+    cur.execute("SELECT EMail FROM BrukerKonto WHERE EMail = ?", (email,))
+    Email = cur.fetchone()[0]
+    if Email == email:
+        return print("Emailen er allerede i bruk")
     #BYTT TILBAKE TIL BARE RETURN NÅR DET SKAL BLI BRUKT I GUI DETTE ER FOR Å SE DET TYDLIGERE 
-    
+
     cur.execute("SELECT COUNT(*) FROM BrukerKonto WHERE Brukernavn = ?", (brukernavn,))
-    bruker = cur.fetchone()
+    bruker = cur.fetchone()[0]
     
     if bruker > 0:
-        return ("Dette brukernavnet er allerede i bruk")
+        return print("Dette brukernavnet er allerede i bruk")
     #BYTT TILBAKE TIL BARE RETURN NÅR DET SKAL BLI BRUKT I GUI
     
-    cur.execute("INSERT INTO Bruker_konto(Brukernavn, Passord, E-Mail, Admin) VALUES (?, ?, ?, ?)", (brukernavn, passord, email, isadmin))
+    cur.execute("INSERT INTO BrukerKonto(Brukernavn, Passord, EMail, Admin) VALUES (?, ?, ?, ?)", (brukernavn, passord, email, isadmin))
     con.commit()
-    return print("Brukerkonto opprettet suksessfullt") 
+    return print("Brukerkonto opprettet suksessfullt")
+
+lag_brukerkonto("DAS","NO","TEST",0) 
     
+con.close
