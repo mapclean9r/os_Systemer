@@ -1,4 +1,3 @@
-from src.userdata.Database import lag_brukerkonto
+from userdata.Database.bruker_def import lag_brukerkonto
 
-lag_brukerkonto("JA", "NEI", "SAMME", True)
-lag_brukerkonto("NEI", "JA", "SAMME", True)
+lag_brukerkonto("DAWDWA", "NEI", "DWDA", 0)

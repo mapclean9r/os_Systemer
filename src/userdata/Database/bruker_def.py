@@ -12,23 +12,37 @@ def finne_id_bruker(bruker):
 
 
 def lag_brukerkonto(brukernavn, passord, email, isadmin):
-    cur.execute("SELECT EMail FROM BrukerKonto WHERE EMail = ?", (email,))
-    Email = cur.fetchone
-    if Email == email:
-        return print("Emailen er allerede i bruk")
-    #BYTT TILBAKE TIL BARE RETURN NÅR DET SKAL BLI BRUKT I GUI DETTE ER FOR Å SE DET TYDLIGERE
+    
+    cur.execute("SELECT COUNT(*) FROM BrukerKonto WHERE EMail = ?", (email,))
+    Email = cur.fetchone()[0]
+    # if Email > email:
+    #     return print("Emailen er allerede i bruk")
+    # #BYTT TILBAKE TIL BARE RETURN NÅR DET SKAL BLI BRUKT I GUI DETTE ER FOR Å SE DET TYDLIGERE 
+    #FIKS TIL SENERE FOR FUNGERER IKKE
 
     cur.execute("SELECT COUNT(*) FROM BrukerKonto WHERE Brukernavn = ?", (brukernavn,))
     bruker = cur.fetchone()[0]
-
+    
     if bruker > 0:
         return print("Dette brukernavnet er allerede i bruk")
     #BYTT TILBAKE TIL BARE RETURN NÅR DET SKAL BLI BRUKT I GUI
-
+    #FUNGERER MAGISK 
+    
     cur.execute("INSERT INTO BrukerKonto(Brukernavn, Passord, EMail, Admin) VALUES (?, ?, ?, ?)", (brukernavn, passord, email, isadmin))
     con.commit()
     return print("Brukerkonto opprettet suksessfullt")
 
-lag_brukerkonto("NEI", "JA", "SAMME", True)
+def brukernavn_get(brukernavn):
+    cur.execute("SELECT Brukernavn FROM BrukerKonto WHERE Brukernavn = ?",(brukernavn,))
+    brukernav = cur.fetchone()
+    return brukernav
 
-con.close()
+def passord_get(passord):
+    cur.execute("SELECT Passord FROM BrukerKonto WHERE Passord = ?",(passord,))
+    passo = cur.fetchone()
+    return passo
+
+
+lag_brukerkonto("DAS","NO","TEST",0) 
+    
+con.close
