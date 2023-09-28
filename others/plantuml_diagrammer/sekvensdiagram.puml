@@ -1,0 +1,18 @@
+@startuml Sekvensdiagram
+actor Bruker
+participant Frontend
+participant Backend
+participant Database
+actor Admin
+
+Bruker -> Frontend: Velger opplevelse
+activate Frontend
+Frontend -> Frontend: Bruker modifiserer opplevelse
+Frontend --> Backend: Sender forespørsel
+activate Backend
+Backend --> Database: Undersøker forespørsel
+Backend --> Database: Legger til opplevelse i stytemet
+Frontend <-- Backend: Ordre godkjent
+Frontend --> Bruker: Kvitering på mail
+deactivate Backend
+deactivate Frontend
