@@ -1,5 +1,4 @@
-from Database.database_def import *
-from Database.bruker_def import *
-from Database.person_def import *
-from Database.tur_def import *
+from src.userdata.Database import lag_brukerkonto
 
+lag_brukerkonto("JA", "NEI", "SAMME", True)
+lag_brukerkonto("NEI", "JA", "SAMME", True)
