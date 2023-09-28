@@ -1,7 +1,6 @@
-import sqlite3
-from ..Database.tur_def import *
-from ..Database.bruker_def import *
-from ..Database.person_def import *
+from src.userdata.tur_def import *
+from src.userdata.bruker_def import *
+from src.userdata.person_def import *
 
 con = sqlite3.connect("guid.db")
 cur = con.cursor()

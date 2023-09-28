@@ -1,4 +1,4 @@
-from src.userdata.Database.bruker_def import brukernavn_get, passord_get
+from src.userdata.bruker_def import brukernavn_get, passord_get
 
 
 class Username:
