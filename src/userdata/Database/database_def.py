@@ -8,54 +8,6 @@ cur = con.cursor()
 
 
 
-test = cur.execute("SELECT ID FROM Person")
-
-
-# Bruk denne når man skal logge inn
-# Finner ID til brukeren som er akkurat innlogget
-def finne_id_bruker(bruker):
-    cur.execute("SELECT ID FROM Bruker_konto WHERE BRUKERNAVN = ?", (bruker,))
-    result = cur.fetchone()
-    if result:
-        print("res0")
-        return result[0]
-    else:
-        print("-1")
-        return -1
-
-
-def finne_tur_id():
-    pass
-
-
-# Funksjon for å legge inn informasjon om personen (Kan bli mere info hvis noen har ideer)
-def lag_person(fornavn, etternavn, age, ):
-    cur.execute("INSERT INTO Person(FORNAVN,ETTERNAVN,AGE) VALUES (?,?,?)", (fornavn, etternavn, age))
-
-
-#    cur.execute("INSERT INTO kobling_person_Bruker(ID_Person) VALUES (?)", (test,))
-
-
-# Funksjonen for å lage kontoer
-def lag_brukerkonto(brukernavn, passord, email, isadmin):
-    con = sqlite3.connect("guid.db")
-    cur = con.cursor()
-
-    cur.execute("SELECT COUNT(*) FROM Bruker_konto WHERE BRUKERNAVN = ?", (brukernavn,))
-    user_count = cur.fetchone()[0]
-    print("lag_brukerkonto func")
-
-    if user_count > 0:
-        return "Dette brukernavnet er allerede i bruk"
-
-    print("Før")
-    cur.execute("INSERT INTO Bruker_konto(BRUKERNAVN, PASSORD, EMAIL, IS_admin) VALUES (?, ?, ?, ?)",
-                (brukernavn, passord, email, isadmin))
-    print(cur.execute("INSERT INTO Bruker_konto(BRUKERNAVN, PASSORD, EMAIL, IS_admin) VALUES (?, ?, ?, ?)",
-                (brukernavn, passord, email, isadmin)))
-    print("Etter")
-    return "Brukerkonto opprettet suksessfullt"
-
 
 def kobling_bruker_person(bruker_id, person_id):
     ID_bruker = cur.execute("SELECT ID FROM Bruker_konto WHERE Brukernavn = ?", (bruker_id,))
