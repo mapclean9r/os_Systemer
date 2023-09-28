@@ -6,6 +6,10 @@ root = tk.Tk()
 root.title("basic GUI app")
 
 
+# canvas
+canvas = tk.Canvas(root)
+
+
 # lables
 label = tk.Label(root, text="Vetle tkinter app")
 
