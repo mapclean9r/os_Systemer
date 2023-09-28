@@ -3,24 +3,24 @@ con = sqlite3.connect("guid.db")
 cur = con.cursor()
 cur.execute("""CREATE TABLE Person(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
-            FORNAVN TEXT NOT NULL, 
-            ETTERNAVN TEXT NOT NULL,
-            AGE INT NOT NULL)"""
+            Fornavn TEXT NOT NULL, 
+            Etternavn TEXT NOT NULL,
+            Alder INT NOT NULL)"""
             )
 cur.execute("""CREATE TABLE Bruker_konto(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
-            BRUKERNAVN TEXT NOT NULL,
-            PASSORD TEXT NOT NULL,
-            EMAIL TEXT,
-            IS_admin BOOLEAN NOT NULL)"""
+            Brukernavn TEXT NOT NULL,
+            Passord TEXT NOT NULL,
+            E-Mail TEXT,
+            Admin BOOLEAN NOT NULL)"""
             )
 cur.execute("""CREATE TABLE Tur_info(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
-            LAND TEXT,
-            STED TEXT NOT NULL,
-            NAVN TEXT,
-            BESKRIVELSE TEXT,
-            Anmeldinger TEXT)""")
+            Land TEXT,
+            Sted TEXT NOT NULL,
+            Navn TEXT,
+            Beskrivelse TEXT,
+            Anmelding TEXT)""")
 cur.execute("""CREATE TABLE Tur_booking(
             Dato DATE PRIMARY KEY,
             ID_tur INTEGER,
