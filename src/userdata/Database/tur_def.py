@@ -3,11 +3,12 @@ con = sqlite3.connect("guid.db")
 cur = con.cursor()
 
 
-def lag_tur_info(sted, navn, beskrivelse):
-    cur.execute("INSERT INTO Tur_info(STED, NAVN, BESKRIVELSE) VALUES (?, ?, ?)", (sted, navn, beskrivelse))
-    con.commit
+def lag_tur_info(land, sted, navn, beskrivelse):
+    cur.execute("INSERT INTO Tur_info(Land, Sted, Beskrivelse, Andmeldelse) VALUES (?, ?, ?,?)", (land, sted, navn, beskrivelse))
+    con.commit()
 
-
+#se dokumentasjon på sql_lite
+#https://www.youtube.com/watch?v=dQw4w9WgXcQ
 def finne_tur_id():
      pass
 

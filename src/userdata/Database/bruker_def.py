@@ -5,20 +5,20 @@ cur = con.cursor()
 
 
 def finne_id_bruker(bruker):
-    cur.execute("SELECT ID FROM Bruker_konto WHERE BRUKERNAVN = ?", (bruker,))
+    cur.execute("SELECT ID FROM BrukerKonto WHERE Brukernavn = ?", (bruker,))
     result = cur.fetchone() 
     con.commit()
     return print(result)
 
 
 def lag_brukerkonto(brukernavn, passord, email, isadmin):
-    cur.execute("SELECT COUNT(*) FROM Bruker_konto WHERE BRUKERNAVN = ?", (brukernavn,))
-    bruker = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(*) FROM BrukerKonto WHERE Brukernavn = ?", (brukernavn,))
+    bruker = cur.fetchone()
     
     if bruker > 0:
-        return "Dette brukernavnet er allerede i bruk"
+        return ("Dette brukernavnet er allerede i bruk")
     
-    cur.execute("INSERT INTO Bruker_konto(BRUKERNAVN, PASSORD, EMAIL, IS_admin) VALUES (?, ?, ?, ?)", (brukernavn, passord, email, isadmin))
+    cur.execute("INSERT INTO Bruker_konto(Brukernavn, Passord, E-Mail, Admin) VALUES (?, ?, ?, ?)", (brukernavn, passord, email, isadmin))
     con.commit()
-    return "Brukerkonto opprettet suksessfullt" 
+    return print("Brukerkonto opprettet suksessfullt") 
     
