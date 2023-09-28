@@ -11,7 +11,7 @@ cur.execute("""CREATE TABLE BrukerKonto(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
             Brukernavn TEXT NOT NULL,
             Passord TEXT NOT NULL,
-            E-Mail TEXT,
+            EMail TEXT,
             Admin BOOLEAN NOT NULL)"""
             )
 cur.execute("""CREATE TABLE TurInfo(
