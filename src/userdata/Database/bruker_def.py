@@ -32,6 +32,17 @@ def lag_brukerkonto(brukernavn, passord, email, isadmin):
     con.commit()
     return print("Brukerkonto opprettet suksessfullt")
 
+def brukernavn_get(brukernavn):
+    cur.execute("SELECT Brukernavn FROM BrukerKonto WHERE Brukernavn = ?",(brukernavn,))
+    brukernavn = cur.fetchone()
+    return brukernavn
+
+def passord_get(passord):
+    cur.execute("SELECT Passord FROM BrukerKonto WHERE Passord = ?",(passord,))
+    passo = cur.fetchone()
+    return passo
+
+
 lag_brukerkonto("DAS","NO","TEST",0) 
     
 con.close
