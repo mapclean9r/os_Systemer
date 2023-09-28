@@ -34,8 +34,8 @@ def lag_brukerkonto(brukernavn, passord, email, isadmin):
 
 def brukernavn_get(brukernavn):
     cur.execute("SELECT Brukernavn FROM BrukerKonto WHERE Brukernavn = ?",(brukernavn,))
-    brukernavn = cur.fetchone()
-    return brukernavn
+    brukernav = cur.fetchone()
+    return brukernav
 
 def passord_get(passord):
     cur.execute("SELECT Passord FROM BrukerKonto WHERE Passord = ?",(passord,))
