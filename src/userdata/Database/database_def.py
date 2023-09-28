@@ -18,7 +18,7 @@ def kobling_bruker_person(bruker_id, person_id):
         cur.execute("INSERT INTO kobling_person_Bruker(ID_Bruker, ID_Person) VALUES (?, ?)", (ID_bruk[0], ID_pers[0]))
     else:
         print("User or person not found.")
-    con.commit
+    con.commit()
 
 
 
@@ -35,6 +35,6 @@ variabelnavn = "Tam"
 # print(ID)
 
 
-con.close
+con.close()
 
 
