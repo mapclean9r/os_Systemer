@@ -8,7 +8,7 @@ left to right direction
 :Bruker: --> (Lagre opplevelse i favoritter)
 
 :Bruker: --> (Søke etter opplevelse)
-:Bruker: --> (Logge inn/ut)
+:Bruker: --> (Logge in/ut)
 :Bruker: --> (Få ordrebekreftelse/kvitering på mail)
 :Bruker: --> (Kontakte brukerstøtte)
 
@@ -21,8 +21,8 @@ left to right direction
 (Redigere opplevelse) <-- :Admin:
 (Blokkere brukere) <-- :Admin:
 (Se ordrehistorikk) <-- :Admin:
-(Logge inn/ut) <-- :Admin:
+(Logge in/ut) <-- :Admin:
 (Slette opplevelse) <-- :Admin:
 
-
 @enduml
+PlantUML-kildekode til for use caset
