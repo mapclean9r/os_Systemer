@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 
 # Create the main application window
 app = tk.Tk()
-app.title("Image Viewer")
+app.title("Bilde test")
 
 
 # Function to open an image file
@@ -29,5 +29,5 @@ image_label = tk.Label(app)
 image_label.pack()
 
 
-# Start the Tkinter main loop
+# Tkinter main loop
 app.mainloop()
