@@ -43,6 +43,4 @@ def passord_get(passord):
     return passo
 
 
-lag_brukerkonto("DAS","NO","TEST",0) 
-    
 con.close
