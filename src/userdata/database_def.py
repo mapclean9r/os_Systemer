@@ -20,7 +20,8 @@ def kobling_bruker_person(Brukernavn, Person_navn):
 
 
 
-
+def test():
+    return print("TEST")
 
 
 #lag_brukerkonto("FFFF","TEST","FAKE@Fakis",1)
