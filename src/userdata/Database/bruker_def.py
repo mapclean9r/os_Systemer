@@ -10,6 +10,11 @@ def finne_id_bruker(bruker):
     con.commit()
     return print(result)
 
+def finne_brukernavn_id(id):
+    cur.execute("SELECT Brukernavn FROM BrukerKonto WHERE ID = ?",(id,))
+    result = cur.fetchone()
+    return result
+
 
 def lag_brukerkonto(brukernavn, passord, email, isadmin):
     
@@ -42,7 +47,7 @@ def passord_get(passord):
     passo = cur.fetchone()
     return passo
 
-
-lag_brukerkonto("DAS","NO","TEST",0) 
+def test():
+    return print("TEST")
     
 con.close

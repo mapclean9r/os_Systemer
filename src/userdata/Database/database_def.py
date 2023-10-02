@@ -1,7 +1,4 @@
 import sqlite3
-from ..Database.tur_def import *
-from ..Database.bruker_def import *
-from ..Database.person_def import *
 
 con = sqlite3.connect("guid.db")
 cur = con.cursor()
@@ -9,13 +6,13 @@ cur = con.cursor()
 
 
 
-def kobling_bruker_person(bruker_id, person_id):
-    ID_bruker = cur.execute("SELECT ID FROM Bruker_konto WHERE Brukernavn = ?", (bruker_id,))
-    ID_person = cur.execute("SELECT ID FROM Person WHERE Brukernavn = ?", (person_id,))
+def kobling_bruker_person(Brukernavn, Person_navn):
+    ID_bruker = cur.execute("SELECT ID FROM BrukerKonto WHERE Brukernavn = ?", (Brukernavn,))
+    ID_person = cur.execute("SELECT ID FROM Person WHERE Fornavn = ?", (Person_navn,))
     ID_bruk = ID_bruker.fetchone()
     ID_pers = ID_person.fetchone()
     if ID_bruk and ID_pers:
-        cur.execute("INSERT INTO kobling_person_Bruker(ID_Bruker, ID_Person) VALUES (?, ?)", (ID_bruk[0], ID_pers[0]))
+        cur.execute("INSERT INTO KoblingPersonBruker(ID_Bruker, ID_Person) VALUES (?, ?)", (ID_bruk[0], ID_pers[0]))
     else:
         print("User or person not found.")
     con.commit()
@@ -35,6 +32,6 @@ variabelnavn = "Tam"
 # print(ID)
 
 
-con.close()
+#con.close()
 
 
