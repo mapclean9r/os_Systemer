@@ -6,7 +6,7 @@ cur = con.cursor()
 
 def finne_id_bruker(bruker):
     cur.execute("SELECT ID FROM BrukerKonto WHERE Brukernavn = ?", (bruker,))
-    result = cur.fetchone() 
+    result = cur.fetchone()
     con.commit()
     return print(result)
 
