@@ -1,5 +1,5 @@
 import sqlite3
-con = sqlite3.connect("guid.db")
+con = sqlite3.connect("guide.db")
 cur = con.cursor()
 cur.execute("""CREATE TABLE Person(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
