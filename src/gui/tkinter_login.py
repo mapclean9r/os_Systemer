@@ -40,10 +40,10 @@ login_label.pack()
 
 login_button_user = tk.Button(
     root, text="Login User", command=show_homepage_user)
-#login_button_admin = tk.Button(
-    #root, text="Login Admin", command=show_homepage_admin)
+login_button_admin = tk.Button(
+    root, text="Login Admin", command=show_homepage_admin)
 
-#login_button_admin.pack()
+login_button_admin.pack()
 login_button_user.pack()
 
 # Inputfelt for registrering
