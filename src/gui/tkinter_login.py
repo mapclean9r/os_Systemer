@@ -3,18 +3,13 @@ import tkinter_homepage as homepage
 
 root = tk.Tk()
 root.title("Login site")
-root.geometry("800x600")
+root.geometry("1200x700")
 
 def show_homepage_user():  # viser hjem skjerm for bruekr
     clear_login_screen()
     homepage_content = homepage.open_home_site(root, "Bruker")
     homepage_label.config(text=homepage_content)
 
-
-def show_homepage_admin():  # viser hjem skjerm for admin
-    clear_login_screen()
-    homepage_content = homepage.open_home_site(root, "Admin")
-    homepage_label.config(text=homepage_content)
 
 def register():
     username = username_entry.get()
@@ -28,7 +23,6 @@ def register():
 
 def clear_login_screen():  # fjerner loginside innhold
     login_button_user.pack_forget()
-    login_button_admin.pack_forget()
     login_label.pack_forget()
 
 
