@@ -8,6 +8,7 @@ from userdata import bruker_def as db
 def start_login(brukernavn, passord):
     if brukernavn == None:
         print("Wrong unput")
+        return brukernavn, passord
     else:
         print(brukernavn, passord)
         print("XDDDDDD")
@@ -28,3 +29,7 @@ if __name__ == '__main__':
 
     start_login(brukercheckUN, brukercheckPW)
 
+    print("")
+    print("Start")
+    print(start_login(brukercheckUN, brukercheckPW))
+    print("Done")
