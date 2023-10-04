@@ -8,7 +8,7 @@ app = tk.Tk()
 app.title("Bilde test")
 
 
-# Function to open an image file
+# Function to open file through filedialog
 def open_image():
     file_path = filedialog.askopenfilename(filetypes=[("Image Files", "*.png *.jpg *.jpeg *.gif *.bmp")])
     if file_path:
