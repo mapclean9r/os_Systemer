@@ -1,6 +1,5 @@
 import sqlite3
-
-con = sqlite3.connect("guid.db")
+con = sqlite3.connect("src/userdata/guide.db")
 cur = con.cursor()
 
 
