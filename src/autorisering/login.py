@@ -2,22 +2,29 @@ import sys
 sys.path.append('src')
 
 
-from userdata.bruker_def import brukernavn_get, passord_get
+from userdata import bruker_def as db
 
 
 def start_login(brukernavn, passord):
-    if brukernavn in brukernavn_get(brukernavn) and passord_get(passord) == passord:
-        print(brukernavn, passord)
+    if brukernavn == None:
+        print("Wrong unput")
     else:
-        print("Wrong input")
-from login import *
+        print(brukernavn, passord)
+        print("XDDDDDD")
+
+
 
 if __name__ == '__main__':
+
     x = "brukernavn"
     y = "passord"
 
-    brukercheckUN = brukernavn_get(x)
-    brukercheckPW = passord_get(y)
+    create_acc = db.lag_brukerkonto(x, y, "xD@LOL", False)
+
+    print(":DDD")
+
+    brukercheckUN = db.brukernavn_get(x)
+    brukercheckPW = db.passord_get(y)
 
     start_login(brukercheckUN, brukercheckPW)
 
