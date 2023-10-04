@@ -1,13 +1,23 @@
-from src.userdata.bruker_def import brukernavn_get, passord_get
+import sys
+sys.path.append('src')
 
 
-class Username:
+from userdata.bruker_def import brukernavn_get, passord_get
 
-    def __init__(self, brukernavn):
-        self.brukernavn = brukernavn
 
-    def start_login(self, brukernavn, passord):
-        x = "hest"
-        if brukernavn in brukernavn_get(brukernavn) and passord in passord_get(passord):
-            print(brukernavn, passord)
+def start_login(brukernavn, passord):
+    if brukernavn in brukernavn_get(brukernavn) and passord_get(passord) == passord:
+        print(brukernavn, passord)
+    else:
+        print("Wrong input")
+from login import *
+
+if __name__ == '__main__':
+    x = "brukernavn"
+    y = "passord"
+
+    brukercheckUN = brukernavn_get(x)
+    brukercheckPW = passord_get(y)
+
+    start_login(brukercheckUN, brukercheckPW)
 

@@ -7,4 +7,4 @@ def lag_person(fornavn,etternavn,alder,):
     con.commit()
 
 
-con.close()
+#con.close()

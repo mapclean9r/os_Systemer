@@ -4,7 +4,7 @@ cur = con.cursor()
 
 
 def lag_tur_info(land, sted, navn, beskrivelse):
-    cur.execute("INSERT INTO Tur_info(Land, Sted, Beskrivelse, Andmeldelse) VALUES (?, ?, ?,?)", (land, sted, navn, beskrivelse))
+    cur.execute("INSERT INTO TurInfo(Land, Sted, Beskrivelse, Anmelding) VALUES (?, ?, ?,?)", (land, sted, navn, beskrivelse))
     con.commit()
 
 #se dokumentasjon på sql_lite
