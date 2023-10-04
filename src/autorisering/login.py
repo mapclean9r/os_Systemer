@@ -14,6 +14,10 @@ def start_login(brukernavn, passord):
         print("XDDDDDD")
 
 
+def start_registrering(brukernavn, passord, mail):
+    db.lag_brukerkonto(brukernavn, passord, mail, False)
+        
+
 
 if __name__ == '__main__':
 
