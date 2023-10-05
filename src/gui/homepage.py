@@ -1,4 +1,5 @@
 import tkinter as tk
+import login
 
 
 def open_home_site(root, user_type):
@@ -25,47 +26,48 @@ def clear_page(root):
 
 
 def logout():
-    clear_page(root)
-    go_to_loginsite()
+    # clear_page(root)
+    login.create_login_page()
 
 
 def go_to_loginsite():
-    clear_page()
-    homepage_content = homepage.open_home_site(root, "Bruker")
-    homepage_label.config(text=homepage_content)
+    global current_page
+    clear_page(root)
 
     login_label = tk.Label(root, text="Velg brukertype:")
     login_label.pack()
 
     login_button_user = tk.Button(
-        root, text="Login User", command=show_homepage_user)
+        root, text="Login User", command=login.show_homepage_user)
     login_button_admin = tk.Button(
-        root, text="Login Admin", command=show_homepage_admin)
+        root, text="Login Admin", command=login.show_homepage_admin)
 
     login_button_admin.pack()
     login_button_user.pack()
 
-    # Inputfelt for registrering
-    register_label = tk.Label(root, text="Registrering")
-    register_label.pack()
+    if current_page == "Admin":  # Vis kun registreringskomponenter for Admin
+        # Inputfelt for registrering
+        register_label = tk.Label(root, text="Registrering")
+        register_label.pack()
 
-    username_label = tk.Label(root, text="Brukernavn:")
-    username_label.pack()
+        username_label = tk.Label(root, text="Brukernavn:")
+        username_label.pack()
 
-    username_entry = tk.Entry(root)
-    username_entry.pack()
+        username_entry = tk.Entry(root)
+        username_entry.pack()
 
-    password_label = tk.Label(root, text="Passord:")
-    password_label.pack()
+        password_label = tk.Label(root, text="Passord:")
+        password_label.pack()
 
-    password_entry = tk.Entry(root, show="*")  # Skjul passordet
-    password_entry.pack()
+        password_entry = tk.Entry(root, show="*")  # Skjul passordet
+        password_entry.pack()
 
-    register_button = tk.Button(root, text="Registrer", command=register)
-    register_button.pack()
+        register_button = tk.Button(
+            root, text="Registrer", command=login.register)
+        register_button.pack()
 
-    registration_label = tk.Label(root, text="")
-    registration_label.pack()
+        registration_label = tk.Label(root, text="")
+        registration_label.pack()
 
     # jeg vet ikke helt hva det under gjør
     homepage_label = tk.Label(root, text="")
