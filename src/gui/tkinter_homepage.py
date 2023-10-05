@@ -11,6 +11,14 @@ def open_home_site(root, user_type):
         bann_button = tk.Button(root, text="Block / Bann users")
         bann_button.pack()
 
+    create_experience_button = tk.Button(root, text="Create experience")
+    create_experience_button.pack()
+
+    sql = sqlscript;
+    sprintf(sql, "INSERT INTO Turinfo VALUES('%d', %s, %s, %s, %s, %s);", dis, tc, tac, trc);   
+
+
+
     
     # TODO her kan det legges til mer innhold
 
