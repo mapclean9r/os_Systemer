@@ -51,7 +51,8 @@ def create_login_page():
 def go_to_homepage_user():
     global current_page
     clear_login_screen()
-    homepage_content = homepage.open_home_site(root, "Bruker")
+    homepage_content = homepage.open_home_site(
+        root, "Bruker", command=open_home_site)
     homepage_label.config(text=homepage_content)
     current_page = homepage_label
 
@@ -59,7 +60,8 @@ def go_to_homepage_user():
 def go_to_homepage_admin():
     global current_page
     clear_login_screen()
-    homepage_content = homepage.open_home_site(root, "Admin")
+    homepage_content = homepage.open_home_site(
+        root, "Admin", command=open_home_site)
     homepage_label.config(text=homepage_content)
     current_page = homepage_label
 

@@ -68,6 +68,7 @@ def go_to_loginsite():
 
         registration_label = tk.Label(root, text="")
         registration_label.pack()
+    current_page = "Login"
 
     # jeg vet ikke helt hva det under gjør
     homepage_label = tk.Label(root, text="")
