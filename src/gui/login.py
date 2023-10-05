@@ -18,12 +18,12 @@ def create_login_page():
     login_label.pack()
 
     login_button_user = tk.Button(
-        root, text="Login User", command=go_to_homepage_user)
+        root, text="Login User", command=go_to_homepage_admin)
     login_button_admin = tk.Button(
         root, text="Login Admin", command=go_to_homepage_admin)
 
-    login_button_admin.pack()
-    login_button_user.pack()
+    login_button_admin.pack(side="left")
+    login_button_user.pack(side="right")
 
     # Inputfelt for registrering
     register_label = tk.Label(root, text="Registrering")
@@ -52,7 +52,7 @@ def go_to_homepage_user():
     global current_page
     clear_login_screen()
     homepage_content = homepage.open_home_site(
-        root, "Bruker", command=open_home_site)
+        root, "Bruker")
     homepage_label.config(text=homepage_content)
     current_page = homepage_label
 
@@ -61,7 +61,7 @@ def go_to_homepage_admin():
     global current_page
     clear_login_screen()
     homepage_content = homepage.open_home_site(
-        root, "Admin", command=open_home_site)
+        root, "Admin")
     homepage_label.config(text=homepage_content)
     current_page = homepage_label
 
@@ -82,10 +82,10 @@ def clear_login_screen():
     login_label.pack_forget()
 
 
-create_login_page()  # Opprett loginsiden
+create_login_page()
 
 # jeg vet ikke helt hva det under gjør
-homepage_label = tk.Label(root, text="")
-homepage_label.pack()
+# homepage_label = tk.Label(root, text="")
+# homepage_label.pack()
 
 root.mainloop()
