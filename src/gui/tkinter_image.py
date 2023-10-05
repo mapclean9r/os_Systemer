@@ -50,14 +50,14 @@ class page_4_image(page_logic):
 
         # Button to open an image
         open_button = tk.Button(app, text="Open Image", command=open_image)
-        open_button.pack(pady=10)
+        open_button.pack(side="left")
 
 
         # Label to display the image
         image_label = tk.Label(app)
         image_label.pack()
 
-        label.pack(side="top", fill="both", expand=True)
+        #label.pack(side="top", fill="both", expand=True)
 
 
 
