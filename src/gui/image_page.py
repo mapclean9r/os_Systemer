@@ -3,10 +3,10 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 
 
-
 class page_logic(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
+
     def show(self):
         self.lift()
 
@@ -32,7 +32,6 @@ class page_3(page_logic):
         label.pack(side="top", fill="both", expand=True)
 
 
-
 class main_page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
@@ -40,27 +39,22 @@ class main_page(tk.Frame):
         p2 = page_2(self)
         p3 = page_3(self)
 
-
         button = tk.Frame(self)
         container = tk.Frame(self)
         button.pack(side="top", fill="both", expand=False)
         container.pack(side="top", fill="both", expand=True)
 
-
         p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p3.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-
 
         b1 = tk.Button(button, text="To page 1", command=p1.show)
         b2 = tk.Button(button, text="To page 2", command=p2.show)
         b3 = tk.Button(button, text="To page 3", command=p3.show)
 
-
         b1.pack(side="left")
         b2.pack(side="left")
         b3.pack(side="left")
-
 
         p1.show()
 
