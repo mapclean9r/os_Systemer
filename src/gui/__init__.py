@@ -1,3 +1,4 @@
+'''
 import tkinter as tk
 from tkinter import *
 
@@ -13,12 +14,11 @@ canvas.pack()
 
 # images
 
-image = tk.PhotoImage(file="C:/Users/save4/Pictures/IMG_1539.jpg")
+# image = tk.PhotoImage(file="C:/Users/save4/Pictures/IMG_1539.jpg")
 
 
 # image placement
-#canvas.create_image(150, 150, image=image)
-
+# canvas.create_image(150, 150, image=image)
 
 
 # lables
@@ -33,3 +33,4 @@ button.pack()
 
 
 root.mainloop()
+'''

@@ -1,9 +1,12 @@
-import sqlite3
-import tkinter as tk
+from login_logout import registrer_user
+from login_logout import login_check
 from tkinter import messagebox, simpledialog, ttk
+import tkinter as tk
+import sqlite3
 
-from src.login_logout import login_check, registrer_user
-from src.login_logout import registrer_user
+import sys
+sys.path.append('src')
+
 
 # Database Setup
 conn = sqlite3.connect('tour_marketplace.db')
@@ -66,16 +69,20 @@ class MarketplaceApp(tk.Tk):
         username = self.entry_username.get()
         password = self.entry_password.get()
 
-        cursor.execute('SELECT * FROM users WHERE username=? AND password=?', (username, password))
+        cursor.execute(
+            'SELECT * FROM users WHERE username=? AND password=?', (username, password))
         user = cursor.fetchone()
 
-        login_check.check_username(self.username, username, self.show_marketplace)
+        login_check.check_username(
+            self.username, username, self.show_marketplace)
+
     def register(self):
 
         registrer_user.making_a_user()
 
     def logout(self):
-        answer = messagebox.askyesno("Logout", "Are you sure you want to log out?")
+        answer = messagebox.askyesno(
+            "Logout", "Are you sure you want to log out?")
         if not answer:
             return
 
@@ -91,33 +98,40 @@ class MarketplaceApp(tk.Tk):
         frame = tk.Frame(self)
         frame.pack(pady=20)
 
-        lbl_title = tk.Label(frame, text=f"Welcome, {self.username}", font=("Arial", 24))
+        lbl_title = tk.Label(
+            frame, text=f"Welcome, {self.username}", font=("Arial", 24))
         lbl_title.pack(pady=20)
 
-        btn_offer_tour = tk.Button(frame, text="Offer a Tour", command=self.offer_tour)
+        btn_offer_tour = tk.Button(
+            frame, text="Offer a Tour", command=self.offer_tour)
         btn_offer_tour.pack(pady=20)
 
         btn_logout = tk.Button(frame, text="Logout", command=self.logout)
         btn_logout.pack(pady=20)
 
-        btn_delete_tour = tk.Button(frame, text="Delete Tour", command=self.delete_tour)
+        btn_delete_tour = tk.Button(
+            frame, text="Delete Tour", command=self.delete_tour)
         btn_delete_tour.pack(pady=20)
 
-        self.tree = ttk.Treeview(frame, columns=('Title', 'Description', 'Offered by'))
+        self.tree = ttk.Treeview(frame, columns=(
+            'Title', 'Description', 'Offered by'))
         self.tree.heading('Title', text='Title')
         self.tree.heading('Description', text='Description')
         self.tree.heading('Offered by', text='Offered by')
         self.tree.pack(pady=20)
 
-        cursor.execute('SELECT title, description, username FROM tours JOIN users ON tours.offered_by=users.id')
+        cursor.execute(
+            'SELECT title, description, username FROM tours JOIN users ON tours.offered_by=users.id')
         for tour in cursor.fetchall():
             self.tree.insert("", "end", values=tour)
 
     def offer_tour(self):
         title = simpledialog.askstring("Offer a Tour", "Enter tour title:")
-        description = simpledialog.askstring("Offer a Tour", "Enter tour description:")
+        description = simpledialog.askstring(
+            "Offer a Tour", "Enter tour description:")
 
-        cursor.execute('SELECT id FROM users WHERE username=?', (self.username,))
+        cursor.execute('SELECT id FROM users WHERE username=?',
+                       (self.username,))
         user_id = cursor.fetchone()[0]
 
         cursor.execute('INSERT INTO tours (title, description, offered_by) VALUES (?, ?, ?)',
@@ -134,7 +148,8 @@ class MarketplaceApp(tk.Tk):
             messagebox.showerror("Error", "No tour selected.")
             return
 
-        confirm = messagebox.askyesno("Delete Tour", "Are you sure you want to delete the selected tour?")
+        confirm = messagebox.askyesno(
+            "Delete Tour", "Are you sure you want to delete the selected tour?")
         if not confirm:
             return
 
