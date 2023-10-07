@@ -1,12 +1,7 @@
-from login_logout import registrer_user
-from login_logout import login_check
-from tkinter import messagebox, simpledialog, ttk
-import tkinter as tk
 import sqlite3
-
-import sys
-sys.path.append('src')
-
+import tkinter as tk
+from tkinter import messagebox, simpledialog, ttk
+from ..login_logout import login_check
 
 # Database Setup
 conn = sqlite3.connect('tour_marketplace.db')
@@ -66,6 +61,8 @@ class MarketplaceApp(tk.Tk):
         btn_register.pack()
 
     def login(self):
+        login_check()
+        '''
         username = self.entry_username.get()
         password = self.entry_password.get()
 
@@ -73,12 +70,25 @@ class MarketplaceApp(tk.Tk):
             'SELECT * FROM users WHERE username=? AND password=?', (username, password))
         user = cursor.fetchone()
 
-        login_check.check_username(
-            self.username, username, self.show_marketplace)
+        if user:
+            self.username = username
+            self.show_marketplace()
+        else:
+            messagebox.showerror("Error", "Incorrect username or password.")
+'''
 
     def register(self):
+        username = simpledialog.askstring("Register", "Enter username:")
+        password = simpledialog.askstring(
+            "Register", "Enter password:", show="*")
 
-        registrer_user.making_a_user()
+        try:
+            cursor.execute(
+                'INSERT INTO users (username, password) VALUES (?, ?)', (username, password))
+            conn.commit()
+            messagebox.showinfo("Success", "Registered successfully.")
+        except sqlite3.IntegrityError:
+            messagebox.showerror("Error", "Username already exists.")
 
     def logout(self):
         answer = messagebox.askyesno(
