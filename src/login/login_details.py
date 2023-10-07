@@ -1,6 +1,8 @@
+from tkinter import *
 import tkinter as tk
 from tkinter import messagebox
 from src.markedplaceApp import database_creation
+
 
 def login_checker(self):
     username = self.entry_username.get()
@@ -33,7 +35,13 @@ def display_login(self):
     self.entry_password = tk.Entry(frame, show="*")
     self.entry_password.pack(pady=5)
 
+    # TODO Gjør så checkboksen har en funksjonalitet, som den ser ut nå, så har den ingen funksjon.
+    check_val = IntVar()
+    checkbox = Checkbutton(frame, text="Login as Admin?", variable=check_val)
+    checkbox.pack()
+
     btn_login = tk.Button(frame, text="Login", command=self.login)
     btn_login.pack(pady=20)
     btn_register = tk.Button(frame, text="Register", command=self.register)
     btn_register.pack()
+

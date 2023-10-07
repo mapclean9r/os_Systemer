@@ -3,6 +3,7 @@ from src.markedplace_operations import tour_management
 from src.login import login_details, user_logout, create_userprofile
 import tkinter as tk
 
+
 # our GUI application
 
 
@@ -12,6 +13,7 @@ class MarketplaceApp(tk.Tk):
 
         self.title('Guided Tour Marketplace')
         self.geometry('900x600')
+        self.resizable(False, False)
 
         self.username = None
         self.show_login()
