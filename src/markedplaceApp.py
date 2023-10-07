@@ -3,7 +3,7 @@ from src.login import login_details, user_logout, create_userprofile
 from src.markedplace_operations import tour_management
 from src.userdata import database_creation
 
-# GUI
+# our GUI application
 class MarketplaceApp(tk.Tk):
     def __init__(self):
         super().__init__()
