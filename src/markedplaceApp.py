@@ -1,9 +1,11 @@
-import tkinter as tk
-from src.login import login_details, user_logout, create_userprofile
-from src.markedplace_operations import tour_management
 from src.userdata import database_creation
+from src.markedplace_operations import tour_management
+from src.login import login_details, user_logout, create_userprofile
+import tkinter as tk
 
 # our GUI application
+
+
 class MarketplaceApp(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -34,6 +36,7 @@ class MarketplaceApp(tk.Tk):
 
     def delete_tour(self):
         tour_management.deleting_a_tour(self)
+
 
 if __name__ == '__main__':
     database_creation.create_database()
