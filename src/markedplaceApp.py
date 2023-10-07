@@ -1,30 +1,11 @@
 import sqlite3
 import tkinter as tk
 from tkinter import messagebox, simpledialog, ttk
-from ..login_logout import login_check
+from src.login import login_check
+from src.login.create_userprofile import making_a_user
+from src.login.user_logout import logout_a_user
+from src.userdata import database_creation
 
-# Database Setup
-conn = sqlite3.connect('tour_marketplace.db')
-cursor = conn.cursor()
-
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY,
-    username TEXT UNIQUE,
-    password TEXT
-)
-''')
-
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS tours (
-    id INTEGER PRIMARY KEY,
-    title TEXT,
-    description TEXT,
-    offered_by INTEGER,
-    FOREIGN KEY(offered_by) REFERENCES users(id)
-)
-''')
-conn.commit()
 
 
 # GUI
@@ -33,7 +14,7 @@ class MarketplaceApp(tk.Tk):
         super().__init__()
 
         self.title('Guided Tour Marketplace')
-        self.geometry('500x400')
+        self.geometry('900x600')
 
         self.username = None
         self.show_login()
@@ -61,45 +42,13 @@ class MarketplaceApp(tk.Tk):
         btn_register.pack()
 
     def login(self):
-        login_check()
-        '''
-        username = self.entry_username.get()
-        password = self.entry_password.get()
-
-        cursor.execute(
-            'SELECT * FROM users WHERE username=? AND password=?', (username, password))
-        user = cursor.fetchone()
-
-        if user:
-            self.username = username
-            self.show_marketplace()
-        else:
-            messagebox.showerror("Error", "Incorrect username or password.")
-'''
+        login_check.login_checker(self)
 
     def register(self):
-        username = simpledialog.askstring("Register", "Enter username:")
-        password = simpledialog.askstring(
-            "Register", "Enter password:", show="*")
-
-        try:
-            cursor.execute(
-                'INSERT INTO users (username, password) VALUES (?, ?)', (username, password))
-            conn.commit()
-            messagebox.showinfo("Success", "Registered successfully.")
-        except sqlite3.IntegrityError:
-            messagebox.showerror("Error", "Username already exists.")
+        making_a_user(self)
 
     def logout(self):
-        answer = messagebox.askyesno(
-            "Logout", "Are you sure you want to log out?")
-        if not answer:
-            return
-
-        for widget in self.winfo_children():
-            widget.destroy()
-        self.username = None
-        self.show_login()
+        logout_a_user(self)
 
     def show_marketplace(self):
         for widget in self.winfo_children():
@@ -130,9 +79,9 @@ class MarketplaceApp(tk.Tk):
         self.tree.heading('Offered by', text='Offered by')
         self.tree.pack(pady=20)
 
-        cursor.execute(
+        database_creation.cursor.execute(
             'SELECT title, description, username FROM tours JOIN users ON tours.offered_by=users.id')
-        for tour in cursor.fetchall():
+        for tour in database_creation.cursor.fetchall():
             self.tree.insert("", "end", values=tour)
 
     def offer_tour(self):
@@ -140,13 +89,13 @@ class MarketplaceApp(tk.Tk):
         description = simpledialog.askstring(
             "Offer a Tour", "Enter tour description:")
 
-        cursor.execute('SELECT id FROM users WHERE username=?',
+        database_creation.cursor.execute('SELECT id FROM users WHERE username=?',
                        (self.username,))
-        user_id = cursor.fetchone()[0]
+        user_id = database_creation.cursor.fetchone()[0]
 
-        cursor.execute('INSERT INTO tours (title, description, offered_by) VALUES (?, ?, ?)',
+        database_creation.cursor.execute('INSERT INTO tours (title, description, offered_by) VALUES (?, ?, ?)',
                        (title, description, user_id))
-        conn.commit()
+        database_creation.conn.commit()
 
         self.tree.insert("", "end", values=(title, description, self.username))
         messagebox.showinfo("Success", "Tour offered successfully.")
@@ -164,13 +113,13 @@ class MarketplaceApp(tk.Tk):
             return
 
         tour_title = self.tree.item(selected_tour)['values'][0]
-        cursor.execute("DELETE FROM tours WHERE title=?", (tour_title,))
-        conn.commit()
+        database_creation.cursor.execute("DELETE FROM tours WHERE title=?", (tour_title,))
+        database_creation.conn.commit()
 
         self.tree.delete(selected_tour)
         messagebox.showinfo("Success", "Tour deleted successfully.")
 
-
 if __name__ == '__main__':
+    database_creation.create_database()
     app = MarketplaceApp()
     app.mainloop()
