@@ -13,15 +13,17 @@ def display_marketplace(self):
         frame, text=f"Welcome, {self.username}", font=("Arial", 24))
     lbl_title.pack(pady=20)
 
-    btn_offer_tour = tk.Button(
-        frame, text="Offer a Tour", command=self.offer_tour)
+    block_ban_button = tk.Button(frame, command=None, text="Bann/Block users", fg="#8B0000")
+    block_ban_button.pack()
+
+    btn_offer_tour = tk.Button(frame, command=self.offer_tour, text="Offer a Tour", fg="green")
     btn_offer_tour.pack(pady=20)
 
-    btn_logout = tk.Button(frame, text="Logout", command=self.logout)
+    btn_logout = tk.Button(frame, text="Logout", command=self.logout, fg="#FFD700")
     btn_logout.pack(pady=20)
 
     btn_delete_tour = tk.Button(
-        frame, text="Delete Tour", command=self.delete_tour)
+        frame, text="Delete Tour", command=self.delete_tour, fg="red")
     btn_delete_tour.pack(pady=20)
 
     self.tree = ttk.Treeview(frame, columns=(
