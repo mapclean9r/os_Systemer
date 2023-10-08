@@ -1,9 +1,8 @@
 import tkinter
 import sys
 
-from src.userdata.bruker_def import get_all_brukernavn
-
 sys.path.append('src')
+from userdata.bruker_def import get_all_brukernavn
 
 def dummy():
     print("dummy")
@@ -56,10 +55,6 @@ def admin_prompt():
         listbox.insert(brukernr, all_names)
         brukernr = brukernr+1
 
-    listbox.insert(0, "Turelsker Karl")
-    listbox.insert(1, "Hest")
-    listbox.insert(2, "Elg")
-    listbox.insert(3, "oste enjoyer")
 
     root.mainloop()
 
