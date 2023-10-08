@@ -1,7 +1,9 @@
 from src.userdata import database_creation
 from src.gui.markedplace_operations import tour_management
+from src.gui.markedplace_operations.tour_management import *
 from src.gui.login import user_logout, create_userprofile, login_details
 import tkinter as tk
+
 
 class MarketplaceApp(tk.Tk):
     def __init__(self):
