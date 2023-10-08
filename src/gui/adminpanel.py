@@ -1,5 +1,6 @@
 import tkinter
 import sys
+from tkinter import messagebox
 
 sys.path.append('src')
 from userdata.bruker_def import get_all_brukernavn
@@ -41,7 +42,7 @@ def admin_prompt():
     commands_cat.configure(bg=custom_color)
     commands_cat.place(x=100, y=60)
 
-    ban_button = tkinter.Button(root, text="Ban User", fg="white", bg=custom_color2, highlightthickness=2)
+    ban_button = tkinter.Button(root, text="Ban User", fg="white", bg=custom_color2, highlightthickness=2, command=ban_user)
     ban_button.place(x=100, y=100)
 
     log_button = tkinter.Button(root, text="User logs", fg="white", bg=custom_color2, highlightthickness=2)
@@ -58,6 +59,8 @@ def admin_prompt():
 
     root.mainloop()
 
+def ban_user():
+    messagebox.showerror("Success", "User Banned")
 
 if __name__ == '__main__':
     admin_prompt()
