@@ -10,7 +10,7 @@ def getuser():
 def admin_prompt():
     root = tkinter.Tk()
     root.title("Admin Panel")
-    root.geometry("800x600")
+    root.geometry("400x300")
     custom_color = "#212121"
     custom_color2 = "#3d3d3d"
     root.configure(bg=custom_color)
@@ -24,32 +24,28 @@ def admin_prompt():
 
     list_users = tkinter.Label(root, text="All Users:", fg="white")
     list_users.configure(bg=custom_color)
-    list_users.place(x=650, y=20)
+    list_users.place(x=250, y=20)
 
 
     listbox = tkinter.Listbox(root, fg="white", bg=custom_color, borderwidth=0, highlightthickness=1)
     listbox.configure(bg=custom_color)
-    listbox.place(x=650, y=50)
+    listbox.place(x=250, y=50)
 
 
     #commands
 
-    randombox = tkinter.Listbox(root, fg="white", bg=custom_color, borderwidth=0, highlightthickness=3)
-    randombox.place(x=370, y=50)
 
     commands_cat = tkinter.Label(root, text="Actons:", fg="white")
     commands_cat.configure(bg=custom_color)
-    commands_cat.place(x=400, y=60)
+    commands_cat.place(x=100, y=60)
 
 
     ban_button = tkinter.Button(root, text="Ban User", fg="white", bg=custom_color2, highlightthickness=2)
-    ban_button.place(x=400, y=100)
+    ban_button.place(x=100, y=100)
 
     log_button = tkinter.Button(root, text="User logs", fg="white", bg=custom_color2, highlightthickness=2)
-    log_button.place(x=400, y=140)
+    log_button.place(x=100, y=140)
 
-    idk_button = tkinter.Button(root, text="idk button", fg="white", bg=custom_color2, highlightthickness=2)
-    idk_button.place(x=400, y=180)
 
 
     listbox.insert(0, "Turelsker Karl")
