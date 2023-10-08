@@ -9,7 +9,7 @@ def getuser():
 
 def admin_prompt():
     root = tkinter.Tk()
-    root.title("Admin Panel")
+    root.title("Admin Tool")
     root.geometry("400x300")
     custom_color = "#212121"
     custom_color2 = "#3d3d3d"
