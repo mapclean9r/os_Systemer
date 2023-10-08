@@ -1,6 +1,6 @@
 import tkinter
 
-def login():
+def dummy():
     print("dummy")
 
 def getuser():
