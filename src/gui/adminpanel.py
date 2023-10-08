@@ -19,6 +19,9 @@ def admin_prompt():
     username_login.configure(bg=custom_color)
     username_login.place(x=0, y=0)
 
+
+    #user list
+
     list_users = tkinter.Label(root, text="All Users:", fg="white")
     list_users.configure(bg=custom_color)
     list_users.place(x=650, y=20)
@@ -31,8 +34,8 @@ def admin_prompt():
 
     #commands
 
-    randombox = tkinter.Listbox(root, fg="white", bg=custom_color, borderwidth=0, highlightthickness=5)
-    randombox.place(x=380, y=50)
+    randombox = tkinter.Listbox(root, fg="white", bg=custom_color, borderwidth=0, highlightthickness=3)
+    randombox.place(x=370, y=50)
 
     commands_cat = tkinter.Label(root, text="Actons:", fg="white")
     commands_cat.configure(bg=custom_color)
@@ -42,7 +45,7 @@ def admin_prompt():
     ban_button = tkinter.Button(root, text="Ban User", fg="white", bg=custom_color2, highlightthickness=2)
     ban_button.place(x=400, y=100)
 
-    log_button = tkinter.Button(root, text="Check user logs", fg="white", bg=custom_color2, highlightthickness=2)
+    log_button = tkinter.Button(root, text="User logs", fg="white", bg=custom_color2, highlightthickness=2)
     log_button.place(x=400, y=140)
 
     idk_button = tkinter.Button(root, text="idk button", fg="white", bg=custom_color2, highlightthickness=2)
