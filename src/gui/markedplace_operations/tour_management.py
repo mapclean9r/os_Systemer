@@ -13,6 +13,7 @@ def display_marketplace(self):
         frame, text=f"Welcome, {self.username}", font=("Arial", 24))
     lbl_title.pack(pady=20)
 
+    # TODO må gi denne knappen funksjonalitet.
     block_ban_button = tk.Button(frame, command=None, text="Bann/Block users", fg="#8B0000")
     block_ban_button.pack()
 
