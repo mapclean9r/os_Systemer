@@ -1,6 +1,6 @@
 import os
 import sqlite3
-pathing = os.path.dirname(__file__) + "/guide.db"
+pathing = os.path.dirname(__file__) + "/tour_marketplace.db"
 
 
 # database Setup
