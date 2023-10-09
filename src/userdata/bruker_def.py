@@ -1,6 +1,10 @@
+import os
 import sqlite3
 
-con = sqlite3.connect("src/userdata/guide.db")
+pathing = os.path.dirname(__file__) + "/guide.db"
+
+
+con = sqlite3.connect(pathing)
 cur = con.cursor()
 
 
@@ -73,7 +77,10 @@ def brukernavn_endre(Brukernavn,Bruker):
         cur.execute("UPDATE Brukerkonto SET Brukernavn=? WHERE Brukernavn = ?",(Brukernavn,Bruker,))
         con.commit()
 
-    
+def get_all_brukernavn():
+    cur.execute("SELECT Brukernavn FROM BrukerKonto")
+    all_brukernavn_list = [row[0] for row in cur.fetchall()]
+    return all_brukernavn_list
 
 
 def is_admin(Brukernavn):

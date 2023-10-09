@@ -1,9 +1,8 @@
-import sys
-sys.path.append('src')
 
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
-from userdata import database_creation
+from src.userdata import database_creation
+from src.gui.adminpanel import admin_prompt
 
 def display_marketplace(self):
     for widget in self.winfo_children():
@@ -41,6 +40,9 @@ def display_marketplace(self):
         'SELECT title, description, username FROM tours JOIN users ON tours.offered_by=users.id')
     for tour in database_creation.cursor.fetchall():
         self.tree.insert("", "end", values=tour)
+
+    Big = tk.Button(frame, command=admin_prompt(), text="admin_tool", fg="#8B0000")
+    Big.pack()
 
 def offering_a_tour(self):
     title = simpledialog.askstring("Offer a Tour", "Enter tour title:")

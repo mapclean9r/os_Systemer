@@ -1,9 +1,6 @@
-import sys
-sys.path.append('src')
-
-from userdata import database_creation
-from gui.markedplace_operations import tour_management
-from gui.login import user_logout, create_userprofile, login_details
+from src.userdata import database_creation
+from src.gui.markedplace_operations import tour_management
+from src.gui.login import user_logout, create_userprofile, login_details
 import tkinter as tk
 
 
