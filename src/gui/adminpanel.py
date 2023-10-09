@@ -3,7 +3,8 @@ import sys
 from tkinter import messagebox
 
 sys.path.append('src')
-from src.userdata.bruker_def import get_all_brukernavn
+#from src.userdata.bruker_def import get_all_brukernavn
+
 
 def dummy():
     print("dummy")
@@ -49,12 +50,12 @@ def admin_prompt():
     log_button.place(x=100, y=140)
 
 
-    all_users_list = get_all_brukernavn()
+    #all_users_list = get_all_brukernavn()
 
-    brukernr = 0
-    for all_names in all_users_list:
-        listbox.insert(brukernr, all_names)
-        brukernr = brukernr+1
+    #brukernr = 0
+    #for all_names in all_users_list:
+    #    listbox.insert(brukernr, all_names)
+    #    brukernr = brukernr+1
 
 
     root.mainloop()
