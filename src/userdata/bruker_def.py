@@ -44,19 +44,43 @@ def brukernavn_get(brukernavn):
     brukernav = cur.fetchone()
     return brukernav
 
-
-def passord_get(passord):
-    cur.execute("SELECT Passord FROM BrukerKonto WHERE Passord = ?", (passord,))
+def passord_get(brukernavn):
+    cur.execute("SELECT Passord FROM BrukerKonto WHERE Brukernavn = ?",(brukernavn,))
     passo = cur.fetchone()
     return passo
 
-def get_all_brukernavn():
-    cur.execute("SELECT Brukernavn FROM BrukerKonto")
-    all_brukernavn_list = [row[0] for row in cur.fetchall()]
-    return all_brukernavn_list
 
-def test():
-    return print("TEST")
+#Skal kanskje fungere
+def passord_endre(Brukernavn,passord):#Skal få det til å være sikkrere hvis jeg har tid
+    # cur.execute("SELECT ID FROM BrukerKonto WHERE Brukernavn = ?",(Brukernavn,))
+    # bruker_id = cur.fetchone
+    cur.execute("UPDATE Brukerkonto SET Passord=? WHERE Brukernavn = ?",(passord,Brukernavn,))
+    con.commit()
+
+def email_endre(brukernavn, email):
+    cur.execute("UPDATE Brukerkonto SET EMail=? WHERE Brukernavn = ?",(email,brukernavn,))
+    con.commit()
+    return print("VEllyket")
+
+#Endre navnet på kontoen og sjekekr om det er allerede tatt
+def brukernavn_endre(Brukernavn,Bruker):
+    cur.execute("SELECT COUNT(*) FROM BrukerKonto WHERE Brukernavn = ?", (Bruker,))
+    bruker = cur.fetchone()[0]
+    
+    if bruker > 0:
+        return print("Dette brukernavnet er allerede i bruk")
+    else:
+        cur.execute("UPDATE Brukerkonto SET Brukernavn=? WHERE Brukernavn = ?",(Brukernavn,Bruker,))
+        con.commit()
+
+    
 
 
+def is_admin(Brukernavn):
+    cur.execute("SELECT Brukernavn,Admin FROM BrukerKonto WHERE Brukernavn = ?",(Brukernavn,))
+    admin = cur.fetchone()
+    return admin
+
+
+    
 con.close

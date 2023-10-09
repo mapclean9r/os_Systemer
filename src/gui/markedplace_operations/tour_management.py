@@ -1,6 +1,9 @@
+import sys
+sys.path.append('src')
+
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
-from src.userdata import database_creation
+from userdata import database_creation
 
 def display_marketplace(self):
     for widget in self.winfo_children():
@@ -14,7 +17,7 @@ def display_marketplace(self):
     lbl_title.pack(pady=20)
 
     # TODO må gi denne knappen funksjonalitet.
-    block_ban_button = tk.Button(frame, command=None, text="Bann/Block users", fg="#8B0000")
+    block_ban_button = tk.Button(frame, command=self, text="Bann/Block users", fg="#8B0000")
     block_ban_button.pack()
 
     btn_offer_tour = tk.Button(frame, command=self.offer_tour, text="Offer a Tour", fg="green")

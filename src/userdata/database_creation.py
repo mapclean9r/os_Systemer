@@ -1,7 +1,7 @@
 import sqlite3
 
 # database Setup
-conn = sqlite3.connect('userdata/tour_marketplace.db')
+conn = sqlite3.connect('src/userdata/tour_marketplace.db')
 cursor = conn.cursor()
 
 
