@@ -3,7 +3,7 @@ import sys
 from tkinter import messagebox
 
 sys.path.append('src')
-from src.userdata.bruker_def import get_all_brukernavn
+from userdata.bruker_def import get_all_brukernavn
 
 def dummy():
     print("dummy")
