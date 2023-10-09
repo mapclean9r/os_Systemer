@@ -1,7 +1,7 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import messagebox
-from src.gui.markedplaceApp import database_creation
+from src.markedplaceApp import database_creation
 
 
 def login_checker(self):
