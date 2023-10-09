@@ -1,7 +1,10 @@
+import os
 import sqlite3
+pathing = os.path.dirname(__file__) + "/guide.db"
+
 
 # database Setup
-conn = sqlite3.connect('userdata/tour_marketplace.db')
+conn = sqlite3.connect(pathing)
 cursor = conn.cursor()
 
 
