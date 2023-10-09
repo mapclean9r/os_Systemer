@@ -3,7 +3,7 @@ import homepage as homepage
 
 root = tk.Tk()
 root.title("Login site")
-root.geometry("800x600")
+root.geometry("1200x800")
 
 # Definere en variabel for å holde på innholdet på gjeldende side
 current_page = None
