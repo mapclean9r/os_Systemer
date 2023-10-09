@@ -9,7 +9,7 @@ def login_checker(self):
     password = self.entry_password.get()
 
     database_creation.cursor.execute(
-        'SELECT * FROM users WHERE username=? AND password=?', (username, password))
+        'SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
     user = database_creation.cursor.fetchone()
 
     if user:

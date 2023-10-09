@@ -27,8 +27,7 @@ def display_marketplace(self):
         frame, text="Delete Tour", command=self.delete_tour, fg="red")
     btn_delete_tour.pack(pady=20)
 
-    self.tree = ttk.Treeview(frame, columns=(
-        'Title', 'Description', 'Offered by'))
+    self.tree = ttk.Treeview(frame, columns=('Title', 'Description', 'Offered by'))
     self.tree.heading('Title', text='Title')
     self.tree.heading('Description', text='Description')
     self.tree.heading('Offered by', text='Offered by')
