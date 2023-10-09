@@ -6,7 +6,7 @@ setup(
     author="Ditt Navn",
     author_email="din@email.com",
     description="En beskrivelse av mitt prosjekt",
-    packages=["mittprosjekt"],
+    packages=["src"],
     install_requires=[
         "",
         "",
