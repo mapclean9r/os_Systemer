@@ -15,7 +15,7 @@ def display_marketplace(self):
     lbl_title.pack(pady=20)
 
     # TODO må gi denne knappen funksjonalitet.
-    block_ban_button = tk.Button(frame, command=self, text="Bann/Block users", fg="#8B0000")
+    block_ban_button = tk.Button(frame, command=admin_prompt, text="Bann/Block users", fg="#8B0000")
     block_ban_button.pack()
 
     btn_offer_tour = tk.Button(frame, command=self.offer_tour, text="Offer a Tour", fg="green")
@@ -39,7 +39,7 @@ def display_marketplace(self):
     for tour in database_creation.cursor.fetchall():
         self.tree.insert("", "end", values=tour)
 
-    Big = tk.Button(frame, command=admin_prompt(), text="admin_tool", fg="#8B0000")
+    Big = tk.Button(frame, command=admin_prompt, text="admin_tool", fg="#8B0000")
     Big.pack()
 
 def offering_a_tour(self):
