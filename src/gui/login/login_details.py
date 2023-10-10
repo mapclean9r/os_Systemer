@@ -5,6 +5,7 @@ from tkinter import *
 import sys
 sys.path.append('src')
 
+
 def login_checker(self):
     username = self.entry_username.get()
     password = self.entry_password.get()
@@ -19,7 +20,8 @@ def login_checker(self):
     else:
         messagebox.showerror("Error", "Incorrect username or password.")
 
-
+#def check_admin_checkbox():
+#    var = check_if_admin.get()
 def display_login(self):
     frame = tk.Frame(self)
     frame.pack(pady=75)
@@ -39,7 +41,7 @@ def display_login(self):
     self.entry_password.pack(pady=3)
 
     # TODO Gjør så checkboksen har en funksjonalitet, som den ser ut nå, så har den ingen funksjon.
-
+    check_if_admin =tk.IntVar()
     checkbox = Checkbutton(frame, text="Login as Admin?", variable=check_if_admin)
     checkbox.pack()
 
