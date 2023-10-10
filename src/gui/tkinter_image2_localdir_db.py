@@ -5,20 +5,13 @@ import os
 from PIL import Image, ImageTk
 import io
 
-
-'''
-Fungerer ikke. Prøver å få til å lese fra userdata/guide.db
-har oppretta tabell for det med sql_lite.py, men bruker ennå lokal
-
-
-todo: få til å lese fra userdata/guide.db
-'''
-
-
 pathing = os.path.dirname(__file__) + "/guide.db"
 
 con = sqlite3.connect(pathing)
 cursor = con.cursor()
+
+
+# Fungerer men bruker egen database i samme directory
 
 
 class TourGuideApp(tk.Tk):
@@ -28,14 +21,8 @@ class TourGuideApp(tk.Tk):
         self.title("Tour Guide Application")
         self.geometry("600x600")
 
-
-        pathing = os.path.dirname(__file__) + "/guide.db"
-
-        #con = sqlite3.connect(pathing)
-        #cursor = con.cursor()
-
-        self.db_connection = sqlite3.connect(pathing)
-
+        userdata_directory = os.path.join(os.path.expanduser("~"), "userdata")
+        db_path = os.path.join(userdata_directory, "guide.db")
 
 
         self.page_container = tk.Frame(self)
@@ -43,26 +30,15 @@ class TourGuideApp(tk.Tk):
 
         self.pages = {}
 
-        #self.db_connection = sqlite3.connect(pathing)
-        #self.db_connection = sqlite3.connect(db_path)
-        #self.create_table_if_not_exists()
-
-
-        '''
-        try:
-            # Initialize the SQLite database with the full path
-            self.db_connection = sqlite3.connect(pathing)
-        except sqlite3.OperationalError as error:
-            print("SQLite error:", error)
-            self.db_connection = None
-        '''
+        self.db_connection = sqlite3.connect(pathing)
+        self.create_table_if_not_exists()
 
         self.create_page("Select Page", StartPage)
         self.create_page("Add Image", AddImagePage)
 
         self.show_page("Select Page")
 
-    '''
+
     def create_table_if_not_exists(self):
         cursor = self.db_connection.cursor()
         cursor.execute("""
@@ -72,13 +48,12 @@ class TourGuideApp(tk.Tk):
             )
         """)
         self.db_connection.commit()
-    '''
+
 
     def create_page(self, name, page_class):
         page = page_class(self.page_container, self)
         self.pages[name] = page
         page.grid(row=0, column=0, sticky="nsew")
-
 
     def show_page(self, name):
         page = self.pages[name]
@@ -97,14 +72,9 @@ class StartPage(tk.Frame):
 
         self.display_images(controller)
 
-
     def display_images(self, controller):
-        pathing = os.path.dirname(__file__) + "/guide.db"
-
-        con = sqlite3.connect(pathing)
-        cursor = con.cursor()
-        #cursor.execute("SELECT id, image_data FROM images")
-        cursor.execute("SELECT ID_bilde, image_data FROM images")
+        cursor = controller.db_connection.cursor()
+        cursor.execute("SELECT id, image_data FROM images")
         images = cursor.fetchall()
 
         if images:

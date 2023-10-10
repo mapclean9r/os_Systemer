@@ -1,6 +1,13 @@
 import sqlite3
-con = sqlite3.connect("src/userdata/guide.db")
+import os
+
+
+pathing = os.path.dirname(__file__) + "/guide.db"
+
+con = sqlite3.connect(pathing)
 cur = con.cursor()
+
+
 cur.execute("""CREATE TABLE Person(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
             Fornavn TEXT NOT NULL, 
@@ -30,3 +37,9 @@ cur.execute("""CREATE TABLE KoblingPersonBruker(
             ID_Person INTEGER,
             ID_Bruker INTEGER)"""
 )
+
+cur.execute("""CREATE TABLE TurBilder (
+            ID_bilde INTEGER PRIMARY KEY AUTOINCREMENT,
+            image_data BLOB
+            )
+            """)
