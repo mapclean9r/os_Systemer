@@ -1,11 +1,9 @@
+from src.userdata import database_creation
+from tkinter import messagebox
+import tkinter as tk
+from tkinter import *
 import sys
 sys.path.append('src')
-
-
-from tkinter import *
-import tkinter as tk
-from tkinter import messagebox
-from markedplaceApp import database_creation
 
 
 def login_checker(self):
@@ -13,7 +11,7 @@ def login_checker(self):
     password = self.entry_password.get()
 
     database_creation.cursor.execute(
-        'SELECT * FROM users WHERE username=? AND password=?', (username, password))
+        'SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
     user = database_creation.cursor.fetchone()
 
     if user:
@@ -22,11 +20,14 @@ def login_checker(self):
     else:
         messagebox.showerror("Error", "Incorrect username or password.")
 
+#def check_admin_checkbox():
+#    var = check_if_admin.get()
 def display_login(self):
     frame = tk.Frame(self)
     frame.pack(pady=75)
 
-    lbl_title = tk.Label(frame, text="Welcome to the greatest collection of experiences", font=("Arial", 24))
+    lbl_title = tk.Label(
+        frame, text="Welcome to the greatest collection of experiences", font=("Arial", 24))
     lbl_title.pack()
 
     lbl_username = tk.Label(frame, text="Username")
@@ -40,12 +41,11 @@ def display_login(self):
     self.entry_password.pack(pady=3)
 
     # TODO Gjør så checkboksen har en funksjonalitet, som den ser ut nå, så har den ingen funksjon.
-    check_val = IntVar()
-    checkbox = Checkbutton(frame, text="Login as Admin?",variable = check_val)
+    check_if_admin =tk.IntVar()
+    checkbox = Checkbutton(frame, text="Login as Admin?", variable=check_if_admin)
     checkbox.pack()
 
-    btn_login = tk.Button(frame, text="Login", width=18, command = self.login)
+    btn_login = tk.Button(frame, text="Login", width=18, command=self.login)
     btn_login.pack(pady=40)
     btn_register = tk.Button(frame, text="Register", width=18, command=self.register)
     btn_register.pack()
-

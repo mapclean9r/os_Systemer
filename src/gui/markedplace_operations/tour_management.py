@@ -1,12 +1,13 @@
-
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
 from src.userdata import database_creation
 from src.gui.adminpanel import admin_prompt
+from ..functions_gui import clear_widgets_from_screen
+from src.gui.login import login_details
+
 
 def display_marketplace(self):
-    for widget in self.winfo_children():
-        widget.destroy()
+    clear_widgets_from_screen.clear_all_widgets(self)
 
     frame = tk.Frame(self)
     frame.pack(pady=20)
@@ -16,13 +17,16 @@ def display_marketplace(self):
     lbl_title.pack(pady=20)
 
     # TODO må gi denne knappen funksjonalitet.
-    block_ban_button = tk.Button(frame, command=self, text="Bann/Block users", fg="#8B0000")
+    block_ban_button = tk.Button(
+        frame, command=admin_prompt, text="Bann/Block users", fg="#8B0000")
     block_ban_button.pack()
 
-    btn_offer_tour = tk.Button(frame, command=self.offer_tour, text="Offer a Tour", fg="green")
+    btn_offer_tour = tk.Button(
+        frame, command=self.offer_tour, text="Offer a Tour", fg="green")
     btn_offer_tour.pack(pady=20)
 
-    btn_logout = tk.Button(frame, text="Logout", command=self.logout, fg="#FFD700")
+    btn_logout = tk.Button(frame, text="Logout",
+                           command=self.logout, fg="#FFD700")
     btn_logout.pack(pady=20)
 
     btn_delete_tour = tk.Button(
@@ -30,35 +34,43 @@ def display_marketplace(self):
     btn_delete_tour.pack(pady=20)
 
     self.tree = ttk.Treeview(frame, columns=(
-        'Title', 'Description', 'Offered by'))
+        'Title', 'Description', 'Offered by', 'Picture', 'Country', 'Location'))
     self.tree.heading('Title', text='Title')
     self.tree.heading('Description', text='Description')
     self.tree.heading('Offered by', text='Offered by')
-    self.tree.pack(pady=20)
+    self.tree.heading('Picture', text='Picture')
+    self.tree.heading('Country', text='Country')
+    self.tree.heading('Location', text='Location')
+    self.tree.pack(pady=15)
 
     database_creation.cursor.execute(
         'SELECT title, description, username FROM tours JOIN users ON tours.offered_by=users.id')
     for tour in database_creation.cursor.fetchall():
         self.tree.insert("", "end", values=tour)
 
-    Big = tk.Button(frame, command=admin_prompt(), text="admin_tool", fg="#8B0000") # type: ignore
+    # if login_details.check_val.get():
+    # TODO command=admin_promt så slik ut tidligere "command=admin_promt()". Da kjørte koden hver gang man logget inn.
+    Big = tk.Button(frame, command=admin_prompt,
+                    text="admin_tool", fg="#8B0000")
     Big.pack()
+
 
 def offering_a_tour(self):
     title = simpledialog.askstring("Offer a Tour", "Enter tour title:")
     description = simpledialog.askstring(
-        "Offer a Tour", "Enter tour description:")
+        "Offer a Tour", "Give us your description:")
 
     database_creation.cursor.execute('SELECT id FROM users WHERE username=?',
-                    (self.username,))
+                                     (self.username,))
     user_id = database_creation.cursor.fetchone()[0]
 
     database_creation.cursor.execute('INSERT INTO tours (title, description, offered_by) VALUES (?, ?, ?)',
-                    (title, description, user_id))
+                                     (title, description, user_id))
     database_creation.conn.commit()
 
     self.tree.insert("", "end", values=(title, description, self.username))
     messagebox.showinfo("Success", "Tour offered successfully.")
+
 
 def deleting_a_tour(self):
     selected_tour = self.tree.selection()
@@ -73,7 +85,8 @@ def deleting_a_tour(self):
         return
 
     tour_title = self.tree.item(selected_tour)['values'][0]
-    database_creation.cursor.execute("DELETE FROM tours WHERE title=?", (tour_title,))
+    database_creation.cursor.execute(
+        "DELETE FROM tours WHERE title=?", (tour_title,))
     database_creation.conn.commit()
 
     self.tree.delete(selected_tour)
