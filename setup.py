@@ -3,12 +3,12 @@ from setuptools import setup
 setup(
     name="mittprosjekt",
     version="1.0.0",
-    author="Ditt Navn",
+    author="Den kurdiske reven",
     author_email="din@email.com",
     description="En beskrivelse av mitt prosjekt",
     packages=["src"],
     install_requires=[
-        "",
+        "sqlite3",
         "",
     ],
     classifiers=[

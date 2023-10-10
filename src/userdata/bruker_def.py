@@ -88,6 +88,12 @@ def is_admin(Brukernavn):
     admin = cur.fetchone()
     return admin
 
+def bruker_slett(Brukernavn):
+    cur.execute("DELETE FROM BrukerKonto WHERE Brukernavn = ?",(Brukernavn,))
+    cur.execute("DELETE FROM ")
+    con.commit()
+
+
 
     
 con.close
