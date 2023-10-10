@@ -1,9 +1,12 @@
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
+
+import src
 from src.userdata import *
 from src.gui.adminpanel import admin_prompt
 from ..functions_gui import clear_widgets_from_screen
 from src.gui.login import login_details
+from ...userdata import database_creation, tur_def
 
 
 def display_marketplace(self):
@@ -56,8 +59,8 @@ def display_marketplace(self):
 
 def offering_a_tour(self):
 
-    title = simpledialog.askstring("Offer a Tour", "Enter tour title:")
-    description = simpledialog.askstring(
+    tittel = simpledialog.askstring("Offer a Tour", "Enter tour title:")
+    beskrivelse = simpledialog.askstring(
         "Offer a Tour", "Give us your description:")
 
     '''
@@ -72,7 +75,7 @@ def offering_a_tour(self):
     self.tree.insert("", "end", values=(tittel, beskrivelse, self.username))
     messagebox.showinfo("Success", "Tour offered successfully.")
 
-    src.userdata.lag_tur_info()
+    tur_def.lag_tur_info()
 
 
 def deleting_a_tour(self):
