@@ -15,7 +15,7 @@ def display_marketplace(self):
     lbl_title.pack(pady=20)
 
     # TODO må gi denne knappen funksjonalitet.
-    block_ban_button = tk.Button(frame, command=self, text="Bann/Block users", fg="#8B0000")
+    block_ban_button = tk.Button(frame, command=admin_prompt, text="Bann/Block users", fg="#8B0000")
     block_ban_button.pack()
 
     btn_offer_tour = tk.Button(frame, command=self.offer_tour, text="Offer a Tour", fg="green")
@@ -39,13 +39,14 @@ def display_marketplace(self):
     for tour in database_creation.cursor.fetchall():
         self.tree.insert("", "end", values=tour)
 
-    Big = tk.Button(frame, command=admin_prompt(), text="admin_tool", fg="#8B0000")
+    # TODO command=admin_promt så slik ut tidligere "command=admin_promt()". Da kjørte koden hver gang man logget inn.
+    Big = tk.Button(frame, command=admin_prompt, text="admin_tool", fg="#8B0000")
     Big.pack()
 
 def offering_a_tour(self):
     title = simpledialog.askstring("Offer a Tour", "Enter tour title:")
     description = simpledialog.askstring(
-        "Offer a Tour", "Enter tour description:")
+        "Offer a Tour", "Give us your description:")
 
     database_creation.cursor.execute('SELECT id FROM users WHERE username=?',
                     (self.username,))
