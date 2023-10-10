@@ -9,7 +9,7 @@ class MarketplaceApp(tk.Tk):
         super().__init__()
 
         self.title('Guided Tour Marketplace')
-        self.geometry('900x600')
+        self.geometry('900x650')
         self.resizable(False, False)
 
         self.username = None

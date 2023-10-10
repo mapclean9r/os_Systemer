@@ -3,6 +3,7 @@ from tkinter import ttk, messagebox, simpledialog
 from src.userdata import database_creation
 from src.gui.adminpanel import admin_prompt
 from ..functions_gui import clear_widgets_from_screen
+from src.gui.login import login_details
 
 def display_marketplace(self):
     clear_widgets_from_screen.clear_all_widgets(self)
@@ -39,8 +40,8 @@ def display_marketplace(self):
     for tour in database_creation.cursor.fetchall():
         self.tree.insert("", "end", values=tour)
 
-
-    # TODO command=admin_promt så slik ut tidligere "command=admin_promt()". Da kjørte koden hver gang man logget inn.
+    #if login_details.check_val.get():
+    #TODO command=admin_promt så slik ut tidligere "command=admin_promt()". Da kjørte koden hver gang man logget inn.
     Big = tk.Button(frame, command=admin_prompt, text="admin_tool", fg="#8B0000")
     Big.pack()
 
