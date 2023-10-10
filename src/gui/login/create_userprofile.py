@@ -3,7 +3,7 @@ sys.path.append('src')
 
 import sqlite3
 from tkinter import simpledialog, messagebox
-from userdata import database_creation
+from src.userdata import database_creation
 
 def making_a_user(self):
     username = simpledialog.askstring("Register", "Enter username:")

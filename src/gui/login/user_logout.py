@@ -1,4 +1,5 @@
 from tkinter import messagebox
+from ..functions_gui import clear_widgets_from_screen
 
 def logout_a_user(self):
     answer = messagebox.askyesno(
@@ -6,7 +7,7 @@ def logout_a_user(self):
     if not answer:
         return
 
-    for widget in self.winfo_children():
-        widget.destroy()
+    clear_widgets_from_screen.clear_all_widgets(self)
+
     self.username = None
     self.show_login()

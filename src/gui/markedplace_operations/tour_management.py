@@ -1,12 +1,11 @@
-
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
 from src.userdata import database_creation
 from src.gui.adminpanel import admin_prompt
+from ..functions_gui import clear_widgets_from_screen
 
 def display_marketplace(self):
-    for widget in self.winfo_children():
-        widget.destroy()
+    clear_widgets_from_screen.clear_all_widgets(self)
 
     frame = tk.Frame(self)
     frame.pack(pady=20)
