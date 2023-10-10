@@ -4,8 +4,8 @@ cur = con.cursor()
 
 from bruker_def import finne_id_bruker
 
-def lag_tur_info(land, sted, navn, beskrivelse):
-    cur.execute("INSERT INTO TurInfo(Land, Sted, Beskrivelse, Anmelding) VALUES (?, ?, ?,?)", (land, sted, navn, beskrivelse))
+def lag_tur_info(Title,Beskrivelse,TilbuddtAv,Land,Lokasjon,):
+    cur.execute("INSERT INTO TurInfo(Titel, Beskrivelse, TilbudtAv, Land, Lokasjon) VALUES (?, ?, ?,?,?)", (Title, Beskrivelse, TilbuddtAv, Land,Lokasjon,))
     con.commit()
 
 #se dokumentasjon på sql_lite

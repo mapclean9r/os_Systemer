@@ -14,16 +14,15 @@ cur.execute("""CREATE TABLE BrukerKonto(
             ID INTEGER PRIMARY KEY AUTOINCREMENT,
             Brukernavn TEXT NOT NULL,
             Passord TEXT NOT NULL,
-            EMail TEXT,
             Admin BOOLEAN NOT NULL)"""
             )
 cur.execute("""CREATE TABLE TurInfo(
-            ID INTEGER PRIMARY KEY AUTOINCREMENT,
-            Land TEXT,
-            Sted TEXT NOT NULL,
-            Navn TEXT,
+            ID INTEGER PRIMARY KEY AUTOINCREMENT,Title,Beskrivelse,TilbuddtAv,Land,Lokasjon
+            Titel TEXT,
             Beskrivelse TEXT,
-            Anmelding TEXT)""")
+            TilbudtAv TEXT,
+            Land TEXT,
+            Lokasjon TEXT)""")
 cur.execute("""CREATE TABLE TurBooking(
             Dato DATE PRIMARY KEY,
             ID_tur INTEGER,
