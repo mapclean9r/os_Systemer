@@ -1,9 +1,12 @@
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
-from src.userdata import database_creation
+
+import src
+from src.userdata import *
 from src.gui.adminpanel import admin_prompt
 from ..functions_gui import clear_widgets_from_screen
 from src.gui.login import login_details
+from ...userdata import database_creation, tur_def
 
 
 def display_marketplace(self):
@@ -34,13 +37,12 @@ def display_marketplace(self):
     btn_delete_tour.pack(pady=20)
 
     self.tree = ttk.Treeview(frame, columns=(
-        'Title', 'Description', 'Offered by', 'Picture', 'Country', 'Location'))
-    self.tree.heading('Title', text='Title')
-    self.tree.heading('Description', text='Description')
-    self.tree.heading('Offered by', text='Offered by')
-    self.tree.heading('Picture', text='Picture')
-    self.tree.heading('Country', text='Country')
-    self.tree.heading('Location', text='Location')
+        'tittel', 'beskrivelse', 'tilbudtAv', 'land', 'lokasjon'))
+    self.tree.heading('tittel', text='tittel')
+    self.tree.heading('beskrivelse', text='beskrivelse')
+    self.tree.heading('tilbudtAv', text='tilbudtAv')
+    self.tree.heading('land', text='land')
+    self.tree.heading('lokasjon', text='lokasjon')
     self.tree.pack(pady=15)
 
     database_creation.cursor.execute(
@@ -56,10 +58,12 @@ def display_marketplace(self):
 
 
 def offering_a_tour(self):
-    title = simpledialog.askstring("Offer a Tour", "Enter tour title:")
-    description = simpledialog.askstring(
+
+    tittel = simpledialog.askstring("Offer a Tour", "Enter tour title:")
+    beskrivelse = simpledialog.askstring(
         "Offer a Tour", "Give us your description:")
 
+    '''
     database_creation.cursor.execute('SELECT id FROM users WHERE username=?',
                                      (self.username,))
     user_id = database_creation.cursor.fetchone()[0]
@@ -67,9 +71,11 @@ def offering_a_tour(self):
     database_creation.cursor.execute('INSERT INTO tours (title, description, offered_by) VALUES (?, ?, ?)',
                                      (title, description, user_id))
     database_creation.conn.commit()
-
-    self.tree.insert("", "end", values=(title, description, self.username))
+'''
+    self.tree.insert("", "end", values=(tittel, beskrivelse, self.username))
     messagebox.showinfo("Success", "Tour offered successfully.")
+
+    tur_def.lag_tur_info()
 
 
 def deleting_a_tour(self):
