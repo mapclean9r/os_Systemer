@@ -5,6 +5,7 @@ from tkinter import *
 import sys
 sys.path.append('src')
 
+check_if_admin=0;
 def login_checker(self):
     username = self.entry_username.get()
     password = self.entry_password.get()
